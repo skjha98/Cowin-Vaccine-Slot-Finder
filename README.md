@@ -28,6 +28,10 @@ pip install -r requirements.txt
 
 python app.py
 ```
+
+## Contributors
+ - [Anushree Chandak](https://github.com/anushreec20)
+
 ## Prerequisites and Aim
 - It uses Python 3.9.2. You will require Python (I have not tried it on older versions).
 - It uses Selenium and Chrome to automate the task of searching for the open slots.
