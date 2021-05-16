@@ -4,6 +4,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from playsound import playsound
 import time
 import sys
+import threading
+
+def playsound_audio():
+    playsound("audio.mp3")
 
 # NO issues
 driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -34,13 +38,13 @@ try:
         #ele.click()
 
     driver.find_elements_by_class_name("calcls")[0].click()
-    #time.sleep(4)
+    time.sleep(2)
     
 
-    driver.execute_script("arguments[0].scrollIntoView();",driver.find_elements_by_class_name("calcls")[1])
-    driver.find_elements_by_class_name("calcls")[1].click()
+    #driver.execute_script("arguments[0].scrollIntoView();",driver.find_elements_by_class_name("calcls")[1])
+    #driver.find_elements_by_class_name("calcls")[1].click()
 
-    driver.find_element_by_class_name("register-btn").click()
+    #driver.find_element_by_class_name("register-btn").click()
 
     # Enter Pincode
     #pincode = input("Enter Pincode:")
@@ -56,13 +60,13 @@ try:
 
     # search for unbooked
     tmp = [x for x in driver.find_elements_by_tag_name('a') if str(x.text).isnumeric()]
-    print(f"Unbook slots: {len(tmp)}")
+    print(f"Unbook slots: {len(tmp)} {tmp}")
 except:
     print("!!!exception!!!")
 
 
 try:
-    while len(tmp)<2:
+    while len(tmp)==0:
         # Enter Pincode
         driver.find_element_by_class_name("mat-input-element").send_keys(pincode)
         driver.find_element_by_class_name("pin-search-btn").click()
@@ -71,7 +75,7 @@ try:
         time.sleep(1)
         driver.find_elements_by_class_name('form-check')[0].click()
         tmp = [x for x in driver.find_elements_by_tag_name('a') if str(x.text).isnumeric()]
-        print(f"Unbook slots: {len(tmp)} timestamp: {time.asctime()}")
+        print(f"Unbook slots: {len(tmp)} {[x.text for x in tmp]} timestamp: {time.asctime()}")
         sum+=len(tmp)
         ### Please add sleep later
 except:
@@ -81,8 +85,14 @@ finally:
     end_time = time.time()
     print(f"total time: {end_time-start_time}")
     # If while breaks, emit sound
-    playsound("audio.mp3")
+    threading.Thread(target=playsound_audio).start()
+    tmp[0].click
     print(f"Total unbooked slots found : {sum}")
+    if sum!=0:
+        tmp[0].click()
+        driver.find_elements_by_class_name("time-slot")[3].click()
+
+
 
 
 
