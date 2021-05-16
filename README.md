@@ -1,15 +1,15 @@
-# Cowid-Slot-Finder
+# Cowin-Vaccine-Slot-Finder
 
-This python selenium application will login and check for the open slots in Cowin application and will play music whenever there would be openslots.
+This python selenium application will log in and check for the open slots on [Cowin Website](https://selfregistration.cowin.gov.in/) and will play audio (as alert) whenever there would be open slots.
 
-## Replace comments and variables before run
+## Replace comments and variables before the run
 - Open app.py
 - On line 15, replace with your mobile number
 - On line 47, replace with your area pincode
 
 ## Installation and Setup
 Setup Virtualenv (Optional)
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install virtualenv.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install **virtualenv**.
 ```bash
 pip install virtualenv
 
@@ -22,12 +22,16 @@ pip install -r requirements.txt
 python app.py
 ```
 Setup without Virtualenv 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.txt.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install from *requirements.txt*.
 ```bash
 pip install -r requirements.txt
 
 python app.py
 ```
+
+## Contributors
+ - [Anushree Chandak](https://github.com/anushreec20)
+
 ## Prerequisites and Aim
 - It uses Python 3.9.2. You will require Python (I have not tried it on older versions).
 - It uses Selenium and Chrome to automate the task of searching for the open slots.
@@ -39,6 +43,7 @@ python app.py
 - Need a better way to eliminate/bypass OTP authentication.
 - Sometimes, while selecting the people for the schedule, it fails (app.py, Line 32)
 - Interruption with the browser can fail the program.
-- Need a way to stop the audio, after you get attention. Or some better way to get notification.
+- Need a way to stop the audio, after you get attention. Or some better way to get notifications.
+
 ## Contributing
 Pull requests are welcome.
